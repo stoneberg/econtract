@@ -45,15 +45,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.
-                headers()
+            headers()
                 .contentTypeOptions().disable()
             .and()
                 .cors().configurationSource(corsConfigurationSource())
             .and()
                 .csrf().disable()
                 .exceptionHandling()
-                .accessDeniedHandler(forbiddenHandler)
-                .authenticationEntryPoint(unauthorizedHandler)
+                .authenticationEntryPoint(unauthorizedHandler) // authentication
+                .accessDeniedHandler(forbiddenHandler) // authorization
             .and()
                 .authorizeRequests()
                 .antMatchers("/error/**", "/files/**").permitAll() // allow pdf download image attachment to template
@@ -71,7 +71,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
-                .permitAll();
+                .permitAll()
+            .and()
+                .sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true);
     }
 
     @Bean
