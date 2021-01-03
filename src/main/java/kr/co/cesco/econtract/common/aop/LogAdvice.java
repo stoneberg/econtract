@@ -159,7 +159,7 @@ public class LogAdvice {
             CustomUserDetails user = (CustomUserDetails)authentication.getPrincipal();
             return "▶" + user.getUsername() + "/" + user.getFullname() + "◀";
         }
-        return StringUtils.EMPTY;
+        return "-";
     }
 
 }
