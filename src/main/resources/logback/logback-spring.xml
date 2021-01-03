@@ -70,6 +70,10 @@
             <appender-ref ref="ERROR_FILEOUT" />
         </logger>
 
+        <logger name="org.springframework.security" level="DEBUG" additivity="false">
+            <appender-ref ref="STDOUT" />
+        </logger>
+
         <logger name="org.springframework.transaction.interceptor" level="ERROR" additivity="false">
             <appender-ref ref="STDOUT" />
         </logger>

@@ -11,7 +11,7 @@
 
     <!-- Find User By Username -->
     <select id="findUserByUsername" resultType="User">
-        /*EnumsMapper.findUserByUsername*/
+        /*UserMapper.findUserByUsername*/
         SELECT
             username,
             fullname,
