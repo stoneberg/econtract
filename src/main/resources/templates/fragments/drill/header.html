@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<header id="header" class="main-color" th:fragment="headerFragment">
+    <div class="header-top">
+        <div class="header-top-inner">
+            <p class="user-info float-right">
+                <span class="name">강가딘</span>
+                <span class="team">강동지부 영업3팀</span>
+            </p>
+        </div>
+    </div>
+    <div class="header-inner">
+        <h1 class="logo">
+            <a th:href="@{/}"><img th:src="@{/images/drill/logo.gif}" alt="전자계약" width="100" height="80" /></a>
+        </h1>
+        <div class="gnb-wrap">
+            <!-- header -->
+            <ul class="main-menu">
+                <!-- li .on 추가시 mouseover와 같은상태 -->
+                <li>
+                    <a th:href="@{/drill}">
+                        <span>DRILL</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>탑 메뉴 #2</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sub-menu">
+                <div class="sub-menu-inner">
+                    <ul>
+                        <!-- a .on 추가시 mouseover와 같은상태 -->
+                        <li><a th:href="@{/drill/crud}">CRUD DRILL</a></li>
+                        <li><a href="#">서브 메뉴 #2</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- header -->
+        </div>
+        <!-- Left menu button -->
+        <div class="btn-group">
+            <!--  personal setting -->
+            <div id="personal-setting" class="btn-setting">
+                <span class="icon-area"></span> 
+                <a href="#" style="text-decoration: none">개인설정</a>
+            </div>
+            <!--  admin page -->
+            <div class="btn-admin">
+                <span class="icon-area"></span> 
+                <a href="#" style="text-decoration: none">관리자</a>
+            </div>
+        </div>
+    </div>
+</header>
+</html>

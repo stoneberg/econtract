@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    @SQL File Name : UserMapper.xml
+    @Description : user queries
+    @Author : stoneberg
+-->
+<mapper namespace="kr.co.cesco.econtract.web.users.mapper.UserMapper">
+
+    <!-- Find User By Username -->
+    <select id="findUserByUsername" resultType="User">
+        /*EnumsMapper.findUserByUsername*/
+        SELECT
+            username,
+            fullname,
+            password,
+            deptname,
+            position,
+            email,
+            user_type
+        FROM sales.app_users
+        WHERE username = #{username}
+    </select>
+
+</mapper>

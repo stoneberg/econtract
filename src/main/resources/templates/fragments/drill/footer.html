@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!-- footer -->
+<footer th:fragment="footerFragment">
+    <th:block th:fragment="bottomFragment">
+        <!-- Common JS -->
+        <script type="text/javascript" th:src="@{/js/common/ajaxCommon.js}"></script>
+        <script type="text/javascript" th:src="@{/js/common/uiCommon.js}"></script>
+        <!-- Custom JS -->
+        <th:block layout:fragment="bottomScript"></th:block>
+    </th:block>
+    <p>Copyright(c) 2020 Cesco Co., Ltd. All Rights Reserved</p>
+    <!-- ///////// Ajax Success Alert Modal ///////// -->
+    <div class="modal fade" id="alertPop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="commonAlert" aria-hidden="true">
+        <div class="modal-dialog modal-default modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="commonAlert">알림</h5>
+                </div>
+                <div id="alertMessage" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default b-close btn-full" data-dismiss="modal">
+                        <p>확인</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ///////// Ajax Success Alert Modal ///////// -->
+</footer>
+<!-- //footer -->
+</html>

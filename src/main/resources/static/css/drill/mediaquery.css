@@ -1,0 +1,387 @@
+@media screen and (max-width: 1260px) {
+  .main .container-wrap {
+    padding: 120px 30px 75px;
+  }
+  .main-banner .banner-image {
+    width: 97%;
+    background-position: bottom right;
+  }
+}
+
+@media screen and (max-width: 1260px) and (min-width: 1024px) {
+  .main-board .board-list .title {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .main .container-wrap {
+    padding-top: 70px;
+  }
+  .main-board {
+    display: none;
+  }
+}
+
+/*
+ mobile css
+*/
+.m-wrap {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 80px;
+}
+.m-wrap header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.m-wrap header .m-logo {
+  width: 142px;
+  font-size: 0;
+  z-index: 1;
+}
+.m-wrap header .title {
+  display: inline-block;
+  width: 100%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+
+}
+.m-wrap .m-container {
+  padding-top: 95px;
+}
+.m-wrap .m-container .container-title {
+  padding: 0 20px;
+}
+.m-wrap .m-container .container-title > p {
+  padding-top: 14px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #222;
+  position: relative;
+}
+.m-wrap .m-container .container-title > p:before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 4px;
+  background-color: #41B9B2;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.m-wrap .m-container .main-menu {
+  padding: 30px 20px 0 20px;
+}
+
+.m-wrap .m-container .pledge-list .list-item {
+  padding: 57px 15px 15px 15px;
+  border: 0;
+  background-color: #f8f9fa;
+}
+.m-wrap .pledge-list .list-item .title:before {
+  width: 32px;
+  height: 32px;
+  top: -42px;
+}
+.m-wrap .pledge-list .list-item .title {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.m-wrap .pledge-list .list-item .more-btn:before {
+  width: 11px;
+  top: 11px;
+  left: 6px;
+}
+.m-wrap .pledge-list .list-item .more-btn:after {
+  height: 11px;
+  top: 6px;
+  left: 11px;
+}
+.m-wrap .pledge-list .list-item .more-btn {
+  width: 26px;
+  height: 26px;
+}
+.pledge-list .item01:hover .title:before {
+  background-image: url(../../images/drill/icon_main_01.png);
+}
+.m-wrap .pledge-list .list-item:hover .title {
+  color: #222;
+}
+.m-wrap .pledge-list .item05 .title:before {
+  background-image: url(../../images/drill/icon_main_04.png);
+}
+.m-wrap .pledge-list .item06 .title:before {
+  background-image: url(../../images/drill/icon_main_06.png);
+}
+.m-wrap .pledge-list .item07 .title:before {
+  background-image: url(../../images/drill/icon_main_07.png);
+}
+.m-wrap .pledge-list .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  line-height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.m-wrap .main-banner {
+  margin-left: 0;
+  margin-top: 30px;
+  padding: 30px 0 0 20px;
+}
+.m-wrap .main-banner:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.m-wrap .main-banner .banner-image {
+  position: static;
+  width: 100%;
+  min-height: 110px;
+  float: right;
+}
+.m-wrap .main-banner .sub-title,
+.m-wrap .main-banner .title {
+  font-size: 16px;
+}
+.m-wrap .main-banner .title {
+  margin-top: 8px;
+}
+.m-wrap .pledge-list .check-badge {
+  background-color: #41B9B2;
+  background-image: url(../../images/drill/icon_check_true.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  font-size: 0;
+}
+.m-wrap .m-content-wrap {
+  padding: 0 20px;
+}
+.m-wrap .m-content-wrap .img-update-wrap {
+  margin-top: 30px;
+}
+.m-wrap .img-update-wrap > .inner > .img-area {
+  width: 150px;
+  height: 150px;
+}
+.m-wrap .img-update-wrap .guide-text {
+  padding: 15px 0 0 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+.m-btn-wrap {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+.m-btn-wrap .btn {
+  width: 100%;
+}
+.m-wrap .img-btn {
+  margin-top: 30px;
+}
+.m-wrap header .header-btn {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  z-index: 1;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+}
+.m-wrap header .header-btn.btn-prev {
+  background-image: url(../../images/drill/icon_arrow_w.png);
+  left: 20px;
+}
+.m-wrap header .header-btn.btn-home {
+  background-image: url(../../images/drill/m_icon_home.png);
+  right: 20px;
+}
+.m-wrap .switch-btn-wrap {
+  margin-top: 20px;
+}
+.m-wrap .switch-btn-wrap .switch-btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.m-wrap .switch-btn-wrap .switch-btn:last-child {
+  margin-bottom: 0;
+}
+.m-wrap .switch-btn-wrap .switch-btn label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  padding: 0 15px;
+  border: 1px solid #e8e8e8;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  font-size: 0;
+  -webkit-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.m-wrap .switch-btn-wrap .switch-btn .label {
+  color: #888;
+  font-size: 16px;
+}
+.m-wrap .switch-btn-wrap .switch-btn input[type="checkbox"]:checked + label {
+  background-color: #fff;
+  border-color: #41B9B2;
+}
+.m-wrap .switch-btn-wrap .switch-btn input[type="checkbox"]:checked + label .label {
+  color: #222;
+}
+.m-wrap .switch-btn-wrap .switch-btn input[type="checkbox"]:checked + label .btn-area {
+  background-color: #41B9B2;
+}
+.m-wrap .switch-btn-wrap .switch-btn input[type="checkbox"]:checked + label .btn-area:before {
+  left: 36px;
+}
+.m-wrap .switch-btn-wrap .switch-btn .btn-area {
+  display: inline-block;
+  width: 62px;
+  height: 30px;
+  background-color: #e8e8e8;
+  position: relative;
+  border-radius: 50px;
+  -webkit-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.m-wrap .switch-btn-wrap .switch-btn .btn-area:before {
+  content: '';
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  margin-top: -11px;
+  -webkit-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.m-wrap .text-warning {
+  padding-top: 15px;
+  font-size: 12px;
+}
+.m-wrap .nav-tabs {
+  padding: 0 20px;
+  border-bottom: 0;
+}
+.m-wrap .nav-tabs .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  font-size: 16px;
+}
+.m-wrap .list-wrap {
+  border: 0;
+}
+.m-wrap.bg-wrap {
+  background-color: #f8f9fa;
+}
+.m-wrap.bg-wrap .m-container {
+  padding-top: 60px;
+}
+.m-wrap.bg-wrap .nav-tabs {
+  padding: 20px 20px 0 20px;
+  background-color: #fff;
+}
+.m-wrap .tab-content {
+  padding: 25px 20px 0 20px;
+}
+.m-wrap .list-wrap .card-list li {
+  min-height: 84px;
+  margin-bottom: 15px;
+  padding: 20px 15px;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+}
+.m-wrap .list-wrap .card-list li a p {
+  font-size: 14px;
+  line-height: 1;
+}
+.m-wrap .list-wrap .card-list li a p.title {
+  color: #222;
+  font-size: 15px;
+}
+.m-wrap .list-wrap .card-list li a p.date,
+.m-wrap .list-wrap .card-list li a p.name {
+  text-align: right;
+}
+.m-wrap .list-wrap .card-list li a p.info,
+.m-wrap .list-wrap .card-list li a p.name {
+  color: #888;
+}
+.m-wrap .list-wrap .card-list li a p.info span {
+  display: inline-block;
+  vertical-align: middle;
+}
+.m-wrap .list-wrap .card-list li a p.info span:after {
+  content: '/';
+  display: inline-block;
+}
+.m-wrap .list-wrap .card-list li a p.info span:last-child:after {
+  content: none;
+}
+.m-wrap .form-container {
+  padding: 95px 20px 0;
+}
+.m-wrap .form-container .form-title {
+  display: block;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 600;
+}
+.m-wrap .form-container .form-wrap {
+  min-height: 500px;
+  margin-top: 20px;
+  padding: 0 0 20px;
+  border: 1px solid #e8e8e8;
+}
+.m-wrap .form-container .form-wrap .pdf,
+.m-wrap .form-container .form-wrap .pdf02,
+.m-wrap .form-container .form-wrap .pdf03,
+.m-wrap .form-container .form-wrap .pdf04 {
+  width: 100% !important;
+  height: auto !important;
+}
+.m-wrap .form-container .form-wrap .pdf-footer {
+  transform: none;
+  position: static;
+  text-align: center;
+  padding-top: 132px;
+}
+
+.m-wrap .form-container .form-wrap .input-default {
+  width: 100%;
+}
+.m-wrap .btn-wrap label .btn.line > p {
+  line-height: 40px;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/drill_layout" lang="ko">
+<!--
+#####################################################################################################
+#    @author  stone
+#    @since   2020. 12. 29.
+#    @version 1.0.0
+#    @Description : web-drill-main
+#####################################################################################################
+-->
+
+<!-- page title -->
+<th:block layout:fragment="title">
+    <title>Web Drill Home</title>
+</th:block>
+
+<!-- custom css -->
+<th:block layout:fragment="css">
+    <style th:inline="text">
+    </style>
+</th:block>
+
+<!-- custom top js -->
+<th:block layout:fragment="topScript">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let thisPage = {};
+        thisPage['ctxPath'] = /*[[@{/}]]*/ '/';
+        console.log("thisPage", thisPage);
+        /*]]>*/
+    </script>
+</th:block>
+
+<!-- Contents div -->
+<div id="contents" layout:fragment="contents">
+    <br/>
+    <div class="row mb-2">
+        <!-- card -->
+        <div class="col-md-4">
+            <div class="card flex-md-row mb-4 shadow-sm h-md-230">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">Alert Modal!</strong>
+                    <h3 class="mb-0">
+                        <span>Alert Modal!</span>
+                    </h3>
+                    <button type="button" id="alertEvent" class="btn btn-default b-delete">
+                        <p>Alert Modal!</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- card -->
+    </div>
+</div>
+<!-- end Contents div -->
+
+<!-- custom bottom js -->
+<th:block layout:fragment="bottomScript">
+    <script type="text/javascript" th:src="@{/js/views/web/drill/web-drill.js}"></script>
+</th:block>
+
+</html>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    @SQL File Name : ProductMapper.xml
+    @Description : product queries
+    @Author : stone
+-->
+<mapper namespace="kr.co.cesco.econtract.web.test.mapper.ProductMapper"> 
+
+    <!-- category -->
+	<resultMap type="CategoryDto" id="categoryResultMap">
+	    <result column="category_id" property="categoryId"/>
+	    <result column="category_name" property="categoryName"/>
+	</resultMap>
+	
+	<!-- brand -->
+    <resultMap type="BrandDto" id="brandResultMap">
+        <result column="brand_id" property="brandId"/>
+        <result column="brand_name" property="brandName"/>
+    </resultMap>
+	 
+	<!-- product -->
+	<resultMap type="ProductDto" id="productResultMap">
+	    <id column="product_id" property="productId"/>
+	    <result column="product_id" property="productId"/>
+	    <result column="product_name" property="productName"/>
+	    <result column="brand_id" property="brandId"/>
+	    <result column="category_id" property="categoryId"/>
+	    <result column="model_year" property="modelYear"/>
+	    <result column="list_price" property="listPrice"/>
+	    <association property="category" resultMap="categoryResultMap"/>
+	    <association property="brand" resultMap="brandResultMap"/>
+	    <collection property="orderItems" ofType="OrderItemDto">
+	        <id column="order_id" property="orderId"/>
+            <result column="order_id" property="orderId"/>
+            <result column="item_id" property="itemId"/>
+            <result column="product_id" property="productId"/>
+            <result column="quantity" property="quantity"/>
+            <result column="list_price" property="listPrice"/>
+            <result column="discount" property="discount"/>
+	    </collection>
+	</resultMap>
+    
+    <!-- Get Products : Association -->
+    <select id="findProducts" resultMap="productResultMap">
+        /*ProductMapper.findProducts*/
+		 SELECT 
+		    product_id,
+		    product_name,
+		    brand_id,
+		    p.category_id,
+		    model_year,
+		    list_price,
+		    category_name
+		 FROM production.products p 
+		 LEFT JOIN production.categories c
+		 ON c.category_id = p.category_id
+    </select>
+    
+    <!-- Get Products By Id : Association -->
+    <select id="findProductsById" resultMap="productResultMap">
+        /*ProductMapper.findProductsById*/
+         SELECT 
+            product_id,
+            product_name,
+            b.brand_id,
+            p.category_id,
+            model_year,
+            list_price,
+            category_name,
+            brand_name
+         FROM production.products p 
+         LEFT JOIN production.categories c
+         ON c.category_id = p.category_id
+         LEFT JOIN production.brands b
+         ON b.brand_id = p.brand_id
+         WHERE p.product_id = #{productId}
+    </select>
+    
+    <!-- Get Products By Id 2: Association -->
+    <select id="findProductsById2" resultMap="productResultMap">
+        /*ProductMapper.findProductsById2*/
+         SELECT 
+            p.product_id,
+            product_name,
+            b.brand_id,
+            p.category_id,
+            model_year,
+            p.list_price,
+            category_name,
+            brand_name,
+            order_id,
+            item_id,
+            quantity,
+            discount
+         FROM production.products p 
+         LEFT JOIN production.categories c
+            ON c.category_id = p.category_id
+         LEFT JOIN production.brands b
+            ON b.brand_id = p.brand_id
+         JOIN sales.order_items oi
+            ON oi.product_id = p.product_id
+         WHERE p.product_id = #{productId}
+    </select>
+    
+    <!-- category2 -->
+    <resultMap type="CategoryDto2" id="categoryResultMap2">
+        <result column="category_id" property="categoryId"/>
+        <result column="category_name" property="categoryName"/>
+    </resultMap>
+    
+    <!-- brand2 -->
+    <resultMap type="BrandDto2" id="brandResultMap2">
+        <result column="brand_id" property="brandId"/>
+        <result column="brand_name" property="brandName"/>
+    </resultMap>
+     
+    <!-- product2 : inner class -->
+    <resultMap type="ProductDto2" id="productResultMap2">
+        <id column="product_id" property="productId"/>
+        <result column="product_id" property="productId"/>
+        <result column="product_name" property="productName"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="model_year" property="modelYear"/>
+        <result column="list_price" property="listPrice"/>
+        <association property="category" resultMap="categoryResultMap2"/>
+        <association property="brand" resultMap="brandResultMap2"/>
+        <collection property="orderItems" ofType="OrderItemDto2">
+            <id column="order_id" property="orderId"/>
+            <result column="order_id" property="orderId"/>
+            <result column="item_id" property="itemId"/>
+            <result column="product_id" property="productId"/>
+            <result column="quantity" property="quantity"/>
+            <result column="list_price" property="listPrice"/>
+            <result column="discount" property="discount"/>           
+        </collection>
+    </resultMap>    
+    
+    <!-- Get Products By Id 3: Association -->
+    <select id="findProductsById3" resultMap="productResultMap2">
+        /*ProductMapper.findProductsById3*/
+         SELECT 
+            p.product_id,
+            product_name,
+            b.brand_id,
+            p.category_id,
+            model_year,
+            p.list_price,
+            category_name,
+            brand_name,
+            order_id,
+            item_id,
+            quantity,
+            discount
+         FROM production.products p 
+         LEFT JOIN production.categories c
+            ON c.category_id = p.category_id
+         LEFT JOIN production.brands b
+            ON b.brand_id = p.brand_id
+         JOIN sales.order_items oi
+            ON oi.product_id = p.product_id
+         WHERE p.product_id = #{productId}
+    </select>
+    
+    
+    <!-- category2 -->
+    <resultMap type="CategoryDto2" id="categoryResultMap3">
+        <result column="category_id" property="categoryId"/>
+        <result column="category_name" property="categoryName"/>
+    </resultMap>
+    
+    <!-- brand2 -->
+    <resultMap type="BrandDto2" id="brandResultMap3">
+        <result column="brand_id" property="brandId"/>
+        <result column="brand_name" property="brandName"/>
+    </resultMap>
+    
+    <!-- orderItems -->
+    <resultMap type="OrderItemDto2" id="orderItemResultMap3">
+        <result column="order_id" property="orderId"/>
+        <result column="item_id" property="itemId"/>
+        <result column="product_id" property="productId"/>
+        <result column="quantity" property="quantity"/>
+        <result column="list_price" property="listPrice"/>
+        <result column="discount" property="discount"/>
+    </resultMap>
+    
+    <resultMap type="ProductDto2" id="productResultMap3">
+        <id column="product_id" property="productId"/>
+        <result column="product_id" property="productId"/>
+        <result column="product_name" property="productName"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="model_year" property="modelYear"/>
+        <result column="list_price" property="listPrice"/>
+        <association column="category_id" property="category" select="findCategoryById"/>
+        <association column="brand_id" property="brand" select="findBrandById"/>
+        <collection column="product_id" property="orderItems" select="findOrderItemsByProductId"/>
+    </resultMap> 
+    
+    <!-- Get Products By Id 4: SubQuery -->
+    <select id="findProductsById4" resultMap="productResultMap3">
+        /*ProductMapper.findProductsById4*/
+         SELECT 
+            product_id,
+            product_name,
+            brand_id,
+            category_id,
+            model_year,
+            list_price
+         FROM production.products
+         WHERE product_id = #{productId}
+    </select>
+    
+    <!-- Get Category By Id : 조회성 메서드는 mapper interface에 따로 정의하지 않아도 된다.-->
+    <select id="findCategoryById" resultMap="categoryResultMap3">
+        /*ProductMapper.findCategoryById*/
+         SELECT 
+            category_id,
+            category_name
+         FROM production.categories
+         WHERE category_id = #{categoryId}
+    </select>
+    
+    <!-- Get Brand By Id -->
+    <select id="findBrandById" resultMap="brandResultMap3">
+        /*ProductMapper.findBrandById*/
+         SELECT 
+            brand_id,
+            brand_name
+         FROM production.brands
+         WHERE brand_id = #{brandId}
+    </select>
+    
+    <!-- Get OrderItems By ProductId -->
+    <select id="findOrderItemsByProductId" resultMap="orderItemResultMap3">
+        /*ProductMapper.findOrderItemsByProductId*/
+         SELECT 
+			order_id,    
+			item_id,     
+			product_id,  
+			quantity,    
+			list_price,  
+			discount    
+         FROM sales.order_items
+         WHERE product_id = #{productId}
+    </select> 
+    
+</mapper>

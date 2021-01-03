@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/drill_layout">
+<!--
+#####################################################################################################
+#    @author stone
+#    @since   2020. 12. 29.
+#    @version 1.0.0                                                                                 
+#    @Description : crud-drill
+#####################################################################################################
+-->
+
+<!-- page title -->
+<th:block layout:fragment="title">
+    <title>공통 양식 관리</title>
+</th:block>
+
+<!-- custom css -->
+<th:block layout:fragment="css">
+    <style th:inline="text">
+    </style>
+</th:block>
+
+<!-- custom top js -->
+<th:block layout:fragment="topScript">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let thisPage = {};
+        thisPage['ctxPath'] = /*[[@{/}]]*/ '/';
+        /*]]>*/
+    </script>
+</th:block>
+
+<!-- Contents div -->
+<div id="contents" layout:fragment="contents">
+    <div class="cont-title-wrap">
+        <h2 class="cont-title">전자계약 관리</h2>
+        <h3 class="cont-sub-title">전자계약을 등록/수정/삭제할 수 있는 화면입니다.</h3>
+    </div>
+
+    <nav class="breadcrumb-wrap clearboth" aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-end align-items-center">
+            <li class="breadcrumb-item home"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item "><a href="#">전자 계약</a></li>
+            <li class="breadcrumb-item active" aria-current="page">전자계약 관리</li>
+        </ol>
+    </nav>
+
+    <div class="content-wrap">
+        <!-- 검색박스 -->
+        <form action="">
+            <div class="box-wrap search-box-wrap">
+                <div class="box-inner">
+                    <!-- 등록일 -->
+                    <div class="datepicker-wrap">
+                        <p class="input-label">등록일</p>
+                        <input type="text" id=date-start class="form-control datepicker-input">
+                        <span>~</span>
+                        <input type="text" id="date-end" class="form-control datepicker-input">
+                    </div>
+                    <!-- 검색조건선택 -->
+                    <select id="search-type" class="selectpicker" title="검색조건선택">
+                        <option value="all" selected>검색조건 선택</option>
+                        <option value="name">고객명/법인명</option>
+                        <option value="charge">영업담당</option>
+                    </select>
+                    <!-- 진행상태 -->
+                    <select id="progress-type" class="selectpicker" title="고객유형선택">
+                        <option value="none" selected>진행상태 선택</option>
+                        <option value="ongoing">계약작성</option>
+                        <option value="estimate">견적발송</option>
+                        <option value="review">SA검토</option>
+                        <option value="reject">SA반려</option>
+                        <option value="complete">계약완료</option>
+                    </select>
+                    <!-- 검색 키워드 입력 -->
+                    <div class="input-default search">
+                        <input id="keyword" class="form-control" type="text" placeholder="검색하실 내용을 입력하세요.">
+                    </div>
+                    <button type="button" id="formList" class="main-color btn btn-s">
+                        <p>검색</p>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- //검색박스 -->
+        <p class="total-num">
+            총<span class="font-red" id="total">0</span>건
+        </p>
+        <!-- 리스트가 없는걍우 .list-wrap에 .list-none 클래스 추가 -->
+        <div id="list-wrap" class="list-wrap">
+            <ul id="thead" class="list-group l-head list-group-horizontal">
+                <li class="d-inline-block w-5">
+                    <div class="checkbox-custom">
+                        <label for="checkbox-all">
+                            <input type="checkbox" id="checkbox-all" name="">
+                            <span class="icon-area"></span>
+                        </label>
+                    </div>
+                </li>
+                <li class="d-inline-block w-5">번호</li>
+                <li class="d-inline-block w-10">등록일</li>
+                <li class="d-inline-block w-10">구분</li>
+                <li class="d-inline-block w-10">고객명/법인명</li>
+                <li class="d-inline-block w-15">계약명</li>
+                <li class="d-inline-block w-10">영업담당</li>
+                <li class="d-inline-block w-10">계약일</li>
+                <li class="d-inline-block w-10">계약기간</li>
+                <li class="d-inline-block w-10">진행상태</li>
+            </ul>
+            <ul id="tbody" class="list-group l-body list-group-horizontal">
+            </ul>
+
+            <div class="list-none-area">
+                <span class="icon-area"></span>
+                <p>등록된 계약이 없습니다.</p>
+            </div>
+        </div>
+
+        <!-- pagination -->
+        <nav id="pagination" aria-label="Page navigation example" style="display: none;">
+        </nav>
+        <!-- //pagination -->
+
+         <div class="btn-wrap text-center">
+            <button id="delete" type="button" class="btn btn-lg b-delete">
+                <p>선택 삭제</p>
+            </button>
+            <button id="update" type="button" class="btn btn-lg">
+                <p>선택 복제</p>
+            </button>
+            <button type="button" id="create-contract" class="main-color btn btn-lg">
+                <p>계약 등록</p>
+            </button>
+        </div>       
+        
+    </div>
+</div>
+<!-- end Contents div -->
+
+<!-- custom bottom js -->
+<th:block layout:fragment="bottomScript">
+    <script type="text/javascript" th:src="@{/js/views/web/drill/crud-drill.js}"></script>
+</th:block>
+
+</html>

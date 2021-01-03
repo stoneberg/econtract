@@ -1,0 +1,493 @@
+.my-info .info-area {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+}
+
+.my-info .info-area > p:first-child {
+    padding-left: 0;
+}
+
+.my-info .info-area > p {
+    display: inline-block;
+    padding: 0 15px;
+    font-size: 16px;
+    line-height: 1;
+    color: #222;
+    position: relative;
+}
+
+.my-info .info-area > p:after {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background-color: #888;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -6px;
+}
+
+.my-info .info-area > p.name:after {
+    content: none;
+}
+
+.my-info .info-area > p.date {
+    display: block;
+    padding-top: 10px;
+    text-align: right;
+}
+
+.my-info .info-area > p.date:after {
+    content: none;
+}
+
+.my-info .sign-img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #222;
+}
+
+.img-update-wrap {
+    width: 100%;
+    padding: 35px 0;
+    border: 2px dashed #e8e8e8;
+    position: relative;
+}
+
+.img-update-wrap > .inner > .img-area {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+    background-color: transparent;
+    background-image: url(../../images/drill/icon_img.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.img-update-wrap > .inner > .img-area > img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+.img-update-wrap .guide-text {
+    padding: 20px 0 25px 0;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 24px;
+    color: #888;
+    text-align: center;
+}
+
+.img-update-wrap > .inner .filebox > label {
+    width: 162px !important;
+    margin: 0 auto;
+}
+
+.pledge-box {
+    margin-top: 20px;
+    background-color: #fff !important;
+}
+
+.pledge-box .pledge-info > li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pledge-box .pledge-info > li > .label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 400;
+    color: #222;
+}
+
+.pledge-box .pledge-info > li > .label:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 8px;
+    height: 8px;
+    margin-right: 5px;
+    border: 1px solid #222;
+    border-radius: 50%;
+}
+
+.pledge-box .pledge-info > li > .label:after {
+    content: ':';
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+.pledge-box .pledge-info > li > .cont {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pledge-box .pledge-info > li > .cont > input[type='text'] {
+    border: 1px solid #222;
+    padding: 0 11px;
+}
+
+.pledge-box .pledge-info > li > .cont > p {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 400px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #222;
+}
+
+.pledge-box .pledge-info > li > .cont > .team-info:after {
+    content: '/';
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pledge-box .pledge-info > li > .cont > .team-info:last-child:after {
+    content: none;
+}
+
+.sign-wrap .date {
+    font-size: 16px;
+    color: #222;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+.sign-wrap {
+    position: relative;
+}
+
+.sign-wrap .sign-img {
+    width: 80px;
+    height: 70px;
+    margin-left: 10px;
+    position: relative;
+    background-image: url(../../images/drill/sign_sample.png);
+}
+
+.sign-wrap .sign-area > p {
+    font-size: 14px;
+}
+
+/****************/
+/***** MAIN *****/
+/****************/
+.hero-wrap {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 80px 0 60px;
+}
+
+.pledge-list {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    flex: 0 0 515px;
+    padding-left: 0;
+}
+
+.pledge-list .list-item {
+    position: relative;
+    width: calc(50% - 10px);
+    padding: 81px 20px 20px;
+    border: solid 1px #3f4a54;
+    background-color: #ffffff;
+    text-align: right;
+    cursor: pointer;
+
+}
+
+.pledge-list .list-item:nth-child(even) {
+    margin-left: 20px;
+}
+
+.pledge-list .list-item:nth-child(3),
+.pledge-list .list-item:nth-child(4) {
+    margin-top: 21px;
+}
+
+.pledge-list .list-item .title {
+    position: relative;
+    margin-bottom: 87px;
+    font-size: 20px;
+    line-height: 22px;
+    color: #3f4a54;
+    text-align: left;
+}
+
+.pledge-list .list-item .title:before {
+    position: absolute;
+    top: -61px;
+    left: 0;
+    width: 46px;
+    height: 46px;
+    background-position: center;
+    background-size: 100%;
+    display: block;
+    content: '';
+}
+
+.pledge-list .item01 .title:before {
+    background-image: url(../../images/drill/icon_main_01.png);
+}
+
+.pledge-list .item02 .title:before {
+    background-image: url(../../images/drill/icon_main_02.png);
+}
+
+.pledge-list .item03 .title:before {
+    background-image: url(../../images/drill/icon_main_03.png);
+}
+
+.pledge-list .item04 .title:before {
+    background-image: url(../../images/drill/icon_main_04.png);
+}
+
+.pledge-list .list-item .more-btn {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #fff;
+}
+
+.pledge-list .list-item .more-btn:before {
+    position: absolute;
+    width: 13px;
+    height: 1px;
+    top: 14px;
+    left: 8px;
+    background: #fff;
+    display: block;
+    content: '';
+}
+
+.pledge-list .list-item .more-btn:after {
+    position: absolute;
+    width: 1px;
+    height: 13px;
+    top: 8px;
+    left: 14px;
+    background: #fff;
+    display: block;
+    content: '';
+}
+
+.pledge-list .badge {
+    position: absolute;
+    top: -13px;
+    right: -13px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: #fff;
+    line-height: 20px;
+    font-weight: 300;
+}
+
+.pledge-list .num-badge {
+    background: #ed453b;
+}
+
+.pledge-list .list-item:hover {
+    transition: all 0.2s;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+    border: solid 1px #3f4a54;
+    background-color: #3f4a54;
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.pledge-list .list-item:hover .title {
+    color: #fff;
+}
+
+.pledge-list .item01:hover .title:before {
+    background-image: url(../../images/drill/icon_main_01_on.png);
+}
+
+.pledge-list .item02:hover .title:before {
+    background-image: url(../../images/drill/icon_main_02_on.png);
+}
+
+.pledge-list .item03:hover .title:before {
+    background-image: url(../../images/drill/icon_main_03_on.png);
+}
+
+.pledge-list .item04:hover .title:before {
+    background-image: url(../../images/drill/icon_main_04_on.png);
+}
+
+.pledge-list.single-pledge-list {
+    flex: 0 0 270px;
+}
+
+.pledge-list.single-pledge-list .list-item {
+    width: 100%;
+}
+
+.main-banner {
+    position: relative;
+    flex-grow: 2;
+    padding: 50px 30px 0;
+    margin-left: 15px;
+    background: #f8f9fa;
+}
+
+.main-banner .sub-title {
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 300;
+    color: #3f4a54;
+}
+
+.main-banner .title {
+    margin-top: 15px;
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 300;
+    color: #3f4a54;
+}
+
+.main-banner .banner-image {
+    position: absolute;
+    bottom: -7px;
+    right: 0;
+    width: 648px;
+    height: 62%;
+    min-height: 221px;
+    background: url(../../images/drill/main_illust.png) center no-repeat;
+    background-size: contain;
+}
+
+.large-banner {
+    padding-top: 82px;
+}
+
+.large-banner .banner-image {
+    width: 448px;
+}
+
+.main-board .board-wrap {
+    height: 100%;
+    border: 1px solid #f1f1f1;
+    padding: 20px 30px;
+}
+
+.main-board .board-title {
+    height: 59px;
+    padding: 20px 0 20px 10px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid #3f4a54;
+}
+
+.main-board .board-title h2 {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 600;
+    color: #222;
+    letter-spacing: -0.9px;
+}
+
+.main-board .board-title .board-more-btn {
+    position: relative;
+    padding-right: 30px;
+    color: #222;
+    font-size: 14px;
+    letter-spacing: -0.42px;
+}
+
+.main-board .board-title .board-more-btn:after {
+    position: absolute;
+    top: -4px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    display: block;
+    content: '';
+    background: url(../../images/drill/icon-board-more.png) center / 100% no-repeat;
+}
+
+.main-board .board-list li {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 58px;
+    padding: 20px 10px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.main-board .board-list li:last-child {
+    border-bottom: 0;
+}
+
+.main-board .board-list .title {
+    width: 75%;
+}
+
+.main-board .board-list .title a {
+    display: block;
+    font-size: 16px;
+    line-height: 18px;
+    color: #222;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.main-board .board-list .utillity span {
+    font-size: 14px;
+    letter-spacing: -0.7px;
+    color: #222;
+}
+
+#canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+#pageNumber {
+    display: inline;
+}
+
+.previous {
+    display: inline;
+    background-color: #FFFFFF;
+    color: black;
+    border-radius: 15%;
+}
+
+.next {
+    display: inline;
+    background-color: #42A047;
+    color: white;
+    border-radius: 15%;
+}
+
+.pdfobject-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+}
+

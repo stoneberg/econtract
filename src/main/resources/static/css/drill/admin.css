@@ -1,0 +1,120 @@
+.wrap.admin-wrap {
+  /* min-width: 1440px;
+  max-width: 1760px; */
+  padding: 0 50px;
+}
+.wrap.admin-wrap header {
+  /* min-width: 1440px; */
+}
+.wrap.admin-wrap .container-wrap {
+  max-width: 1200px;
+}
+.wrap.admin-wrap .main-color {
+  background-color: #283541 !important;
+}
+.wrap.admin-wrap .header-top {
+  background-color: #f1f1f1;
+}
+.wrap.admin-wrap .gnb-wrap .main-menu li.on,
+.wrap.admin-wrap .gnb-wrap .main-menu li:hover {
+  background-color: #1e2831;
+}
+.wrap.admin-wrap .gnb-wrap + .user-info {
+  margin-right: 80px;
+  font-size: 14px;
+  line-height: 40px;
+  color: #fff;
+  line-height: 80px;
+}
+.wrap.admin-wrap .gnb-wrap + .user-info > span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  margin-top: -3px;
+}
+.wrap.admin-wrap .gnb-wrap + .user-info > span {
+  margin-left: 5px;
+}
+.wrap.admin-wrap .gnb-wrap + .user-info > span:first-child {
+  margin-left: 0;
+}
+.wrap.admin-wrap .gnb-wrap + .user-info > span:last-child:after {
+  content: none;
+}
+.wrap.admin-wrap .gnb-wrap + .user-info > span:after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  margin-left: 10px;
+  vertical-align: middle;
+  background-color: #f1f1f1;
+  -webkit-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+  transform: rotate(20deg);
+}
+.last-login {
+  font-size: 14px;
+  text-align: right;
+  color: #167bd8;
+}
+.wrap.admin-wrap .cont-title-wrap:before {
+  border-color: #283541;
+}
+.wrap.admin-wrap .nav-tabs .nav-link:after {
+  background-color: #167bd8;
+}
+.wrap.admin-wrap .page-item.active .page-link {
+  color: #167bd8;
+}
+.wrap.admin-wrap .search-area {
+  display: inline-block;
+  margin-top: 20px;
+}
+.b-ex-down {
+  margin-right: 10px;
+}
+.input-default.member-input {
+  font-size: 16px;
+  color: #222;
+}
+.input-default.member-input > input {
+  display: inline-block;
+  margin-right: 5px;
+  width: 280px;
+  text-align: right;
+}
+.tag-box-wrap.list-none .tag-group > ul {
+  display: none;
+}
+.tag-box-wrap.list-none .list-none-area {
+  display: block;
+}
+.wrap.admin-wrap .gnb-wrap + .user-info .logo {
+  width: auto;
+  line-height: 1;
+  padding-left: 30px;
+  vertical-align: text-top;
+}
+.wrap.admin-wrap .gnb-wrap + .user-info .logo:before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-image: url(../../images/drill/icon_admin.png);
+  background-size: 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 6px;
+}
+
+.user-info .logo .icon-area {
+  display: block;
+  font-size: 16px;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

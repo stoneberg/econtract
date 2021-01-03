@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<settings>
+		<!-- Logger 설정 -->
+		<setting name="logImpl" value="SLF4J" />
+
+		<!-- Mybatis 캐시는 사용하지 않음 (서비스 영역에서 사용) -->
+		<setting name="cacheEnabled" value="false" />
+
+		<!-- Table: ABC_DEF -> Vo: abcDef 로 매핑 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+
+		<!-- Lazy Loading 여부 -->
+		<setting name="aggressiveLazyLoading" value="false" />
+
+		<!-- Null Parameter 처리 -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+
+	</settings>
+
+	<typeAliases>
+		<typeAlias alias="Employee" type="kr.co.cesco.econtract.web.test.domain.Employee" />
+		<typeAlias alias="SearchDto" type="kr.co.cesco.econtract.web.test.domain.EmployeeReq$SearchDto" />
+		<typeAlias alias="ResultDto" type="kr.co.cesco.econtract.web.test.domain.EmployeeRes$ResultDto" />
+		<typeAlias alias="Customer" type="kr.co.cesco.econtract.web.test.domain.Customer" />
+		<typeAlias alias="PersonDto" type="kr.co.cesco.econtract.web.test.dto.PeopleDto$PersonDto" />
+		<!-- Association & Collection -->
+		<typeAlias alias="ProductDto" type="kr.co.cesco.econtract.web.test.dto.ProductDto" />
+		<typeAlias alias="CategoryDto" type="kr.co.cesco.econtract.web.test.dto.CategoryDto" />
+		<typeAlias alias="BrandDto" type="kr.co.cesco.econtract.web.test.dto.BrandDto" />
+		<typeAlias alias="OrderItemDto" type="kr.co.cesco.econtract.web.test.dto.OrderItemDto" />
+		<!-- Inner Class -->
+		<typeAlias alias="CategoryDto2" type="kr.co.cesco.econtract.web.test.domain.Product$CategoryDto2" />
+		<typeAlias alias="BrandDto2" type="kr.co.cesco.econtract.web.test.domain.Product$BrandDto2" />
+		<typeAlias alias="ProductDto2" type="kr.co.cesco.econtract.web.test.domain.Product$ProductDto2" />
+		<typeAlias alias="OrderItemDto2" type="kr.co.cesco.econtract.web.test.domain.Product$OrderItemDto2" />
+		<!-- Enum Class -->
+		<typeAlias alias="UserVirtualCoinReq" type="kr.co.cesco.econtract.web.test.dto.UserVirtualCoinDto$UserVirtualCoinReq" />
+		<typeAlias alias="UserVirtualCoinRes" type="kr.co.cesco.econtract.web.test.dto.UserVirtualCoinDto$UserVirtualCoinRes" />
+		<typeAlias alias="InvestorRes" type="kr.co.cesco.econtract.web.test.dto.UserVirtualCoinDto$InvestorRes" />
+		<!-- User -->
+		<typeAlias alias="User" type="kr.co.cesco.econtract.web.users.model.User" />
+	</typeAliases>
+
+	<typeHandlers>
+		<typeHandler javaType="kr.co.cesco.econtract.common.mybatis.typehandler.CodeEnum"
+					 handler="kr.co.cesco.econtract.common.mybatis.typehandler.CodeEnumTypeHandler" />
+		<typeHandler javaType="BOOLEAN"
+					 handler="kr.co.cesco.econtract.common.mybatis.typehandler.YesNoBooleanTypeHandler" />
+	</typeHandlers>
+
+</configuration>

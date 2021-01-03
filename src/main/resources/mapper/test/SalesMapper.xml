@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    @SQL File Name : SalesMapper.xml
+    @Description : sales queries
+    @Author : stoneberg
+-->
+<mapper namespace="kr.co.cesco.econtract.web.test.mapper.SalesMapper"> 
+    
+    <!-- Get All Customers -->
+    <select id="findCustomers" resultType="Customer">
+        /*SalesMapper.findCustomers*/
+		SELECT 
+		    customer_id,
+		    first_name,
+		    last_name,
+		    phone,
+		    email,
+		    street,
+		    city,
+		    state,
+		    zip_code
+		FROM sales.customers
+    </select>
+    
+    <!-- 프로시저 호출하기 -->
+    <select id="findCustomers2" resultType="Customer" statementType="CALLABLE">
+        { CALL dbo.getCustomers }
+    </select>
+    
+    <!-- Get All Customers3 -->
+    <select id="findCustomers3" resultType="hashmap">
+        /*SalesMapper.findCustomers3*/
+        <![CDATA[
+        SELECT 
+            customer_id as customerId,
+            first_name as firstName,
+            last_name as lastName,
+            phone,
+            email,
+            street,
+            city,
+            state,
+            zip_code as zipCode
+        FROM sales.customers
+        ]]>
+    </select>    
+    
+    
+    <!-- Get All Customers By State -->
+    <select id="findCustomersByState" resultType="Customer">
+        /*SalesMapper.findCustomersByState*/
+        SELECT 
+            customer_id,
+            first_name,
+            last_name,
+            phone,
+            email,
+            street,
+            city,
+            state,
+            zip_code
+        FROM sales.customers
+        WHERE state = #{state}
+    </select>
+    
+    <!--  out param procedure : return value is in parameterType -->
+    <insert id="addPerson" parameterType="kr.co.cesco.econtract.web.test.dto.Person" statementType="CALLABLE">
+        {call test.addPerson(
+	        #{name, mode=IN, jdbcType=VARCHAR},
+	        #{age, mode=IN, jdbcType=INTEGER},
+	        #{id, mode=OUT, jdbcType=INTEGER}
+        )}
+    </insert>
+
+    <insert id="addPerson2" parameterType="PersonDto" statementType="CALLABLE">
+        {call test.addPerson(
+            #{name, mode=IN, jdbcType=VARCHAR},
+            #{age, mode=IN, jdbcType=INTEGER},
+            #{id, mode=OUT, jdbcType=INTEGER}
+        )}
+    </insert>
+
+    <select id="getPerson" statementType="CALLABLE" resultType="kr.co.cesco.econtract.web.test.dto.Person">
+        {call test.getPerson(#{id, mode=IN, jdbcType=INTEGER})}
+    </select>
+
+</mapper>

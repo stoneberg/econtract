@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    @SQL File Name : EnumsMapper.xml
+    @Description : virtual coins queries
+    @Author : stoneberg
+-->
+<mapper namespace="kr.co.cesco.econtract.web.test.mapper.EnumsMapper">
+    
+    <!-- Get All User Virtual Coins -->
+    <select id="findUserVirtualCoins" resultType="UserVirtualCoinRes">
+        /*EnumsMapper.findUserVirtualCoins*/
+		SELECT 
+		    id,
+		    username,
+            virtual_coin,
+            amount
+		FROM sales.user_virtual_coins
+    </select>
+
+    <!-- Add User Virtual Coins -->
+    <insert id="insertUserVirtualCoin">
+        /*EnumsMapper.insertUserVirtualCoin*/
+        INSERT INTO sales.user_virtual_coins
+            (username, virtual_coin, amount)
+        VALUES
+            (#{username}, #{virtualCoin}, #{amount})
+    </insert>
+
+    <!-- user virtual coins -->
+    <resultMap type="UserVirtualCoinRes" id="userVirtualCoinResultMap">
+        <result column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="virtual_coin" property="virtualCoin"/> <!-- 따로 typehandler를 맵핑 안해줘도 자동 변환됨 -->
+        <result column="amount" property="amount"/>
+    </resultMap>
+
+    <!-- investors -->
+    <resultMap type="InvestorRes" id="investorResultMap">
+        <id column="username" property="username"/>
+        <result column="username" property="username"/>
+        <result column="firstname" property="firstname"/>
+        <result column="lastname" property="lastname"/>
+        <result column="email" property="email"/>
+        <result column="use_yn" property="useYn"/>
+        <association property="userVirtualCoin" resultMap="userVirtualCoinResultMap"/>
+    </resultMap>
+
+    <select id="findInvestors" resultMap="investorResultMap">
+        /*EnumsMapper.findInvestors*/
+        SELECT
+            i.username,
+            i.firstname,
+            i.lastname,
+            i.email,
+            i.use_yn,
+            c.id,
+            c.virtual_coin,
+            c.amount
+        FROM sales.investors i INNER JOIN sales.user_virtual_coins c
+        ON i.username = c.username
+    </select>
+
+    <!-- Add Investor -->
+    <insert id="insertInvestor">
+        /*EnumsMapper.insertInvestor*/
+        INSERT INTO sales.investors
+            (username, firstname, lastname, email, use_yn)
+        VALUES
+            (#{username}, #{firstname}, #{lastname}, #{email}, #{useYn})
+    </insert>
+
+</mapper>
