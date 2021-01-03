@@ -28,6 +28,34 @@ const module = (function (global, $, _, moment, thisPage) {
             $.alert("Hello World!");
         });
 
+        /**
+         * Error Test 이벤트
+         */
+        $('#errorTest1').on('click', function (e) {
+            e.preventDefault();
+            console.log("alertEvent====================>");
+            const id = 123456
+            $.ajaxRest($.reqGet(CTX + 'api/test/error/' + id)
+                .build()
+            ).done(function (response) {
+                console.log("response=======>", response);
+            });
+        });
+
+        /**
+         * Error Test #2 이벤트
+         */
+        $('#errorTest2').on('click', function (e) {
+            e.preventDefault();
+            console.log("alertEvent====================>");
+            const id = "AJK"
+            $.ajaxRest($.reqGet(CTX + 'api/test/error2/' + id)
+                .build()
+            ).done(function (response) {
+                console.log("response=======>", response);
+            });
+        });
+
 
     } // end of events
 

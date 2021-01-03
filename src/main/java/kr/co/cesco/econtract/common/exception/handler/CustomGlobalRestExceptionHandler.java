@@ -4,6 +4,7 @@ import kr.co.cesco.econtract.common.exception.*;
 import kr.co.cesco.econtract.common.exception.reponse.ResponseError;
 import kr.co.cesco.econtract.common.exception.type.BaseExceptionType;
 import kr.co.cesco.econtract.common.exception.type.SystemExceptionType;
+import kr.co.cesco.econtract.config.security.userdetails.CustomUserDetails;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,9 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -43,7 +47,8 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(TestAppException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     public ResponseError handleTestAppException(TestAppException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
         return buildError(Error.create(ex.getExceptionType()), request);
     }
 
@@ -51,7 +56,8 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND) // 404
     public ResponseError handleNotFoundException(NotFoundException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
         return buildError(Error.create(ex.getExceptionType()), request);
     }
 
@@ -59,7 +65,8 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     protected ResponseError handlerBadRequestException(BadRequestException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
         return buildError(Error.create(ex.getExceptionType()), request);
     }
 
@@ -67,7 +74,8 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(FileControlException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     protected ResponseError handlerStorageException(FileControlException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
         return buildError(Error.create(ex.getExceptionType()), request);
     }
 
@@ -75,7 +83,8 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(AuthFailException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED) // 401
     protected ResponseError handlerAuthenticationFailedException(AuthFailException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
         return buildError(Error.create(ex.getExceptionType()), request);
     }
 
@@ -85,8 +94,9 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     protected ResponseError handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getStackTrace(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getStackTrace(ex));
         final List<ResponseError.FieldError> fieldErrors = getFieldErrors(ex.getBindingResult());
         return buildFieldErrors(request, fieldErrors);
     }
@@ -95,16 +105,18 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     protected ResponseError handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getStackTrace(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getStackTrace(ex));
         return buildError(SystemExceptionType.INPUT_VALUE_INVALID, ex.getMessage(), request);
     }
 
     @ExceptionHandler(BindException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     protected ResponseError handleBindException(BindException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getStackTrace(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getStackTrace(ex));
         final List<ResponseError.FieldError> fieldErrors = getFieldErrors(ex.getBindingResult());
         return buildFieldErrors(request, fieldErrors);
     }
@@ -112,8 +124,9 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     public ResponseError handleConstraintViolationException(ConstraintViolationException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getStackTrace(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getStackTrace(ex));
         final SystemExceptionType errorCode = SystemExceptionType.INPUT_VALUE_INVALID;
         final String message = getResultMessage(ex.getConstraintViolations().iterator());
         return buildError(errorCode, message, request);
@@ -122,24 +135,27 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     protected ResponseError handleDataIntegrityViolationException(DataIntegrityViolationException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getStackTrace(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getStackTrace(ex));
         return buildError(SystemExceptionType.INPUT_VALUE_INVALID, request);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     protected ResponseError handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getStackTrace(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getStackTrace(ex));
         return buildError(SystemExceptionType.METHOD_NOT_ALLOWED, request);
     }
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     protected ResponseError handleHttpMaxUploadSizeExceededException(MaxUploadSizeExceededException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getStackTrace(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getStackTrace(ex));
         return buildError(SystemExceptionType.FILE_UPLOAD_FAILED, request);
     }
 
@@ -147,16 +163,18 @@ public class CustomGlobalRestExceptionHandler {
     @ExceptionHandler(InvalidDataAccessApiUsageException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST) // 400
     protected ResponseError handleInvalidDataAccessApiUsageException(InvalidDataAccessApiUsageException ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getStackTrace(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getStackTrace(ex));
         return buildError(SystemExceptionType.DATA_ACCESS_FAILED, ex.getMessage(), request);
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // 500
     protected ResponseError handleAnyException(Exception ex, WebRequest request) {
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getMessage(ex));
-        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}", ExceptionUtils.getStackTrace(ex));
+        String currentUser = this.currentUser();
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getMessage(ex));
+        log.error("▒▒▒▒▒▒▒▒ EXCEPTION ▒▒▒▒▒▒▒▒ {}/{}", currentUser, ExceptionUtils.getStackTrace(ex));
         return buildError(SystemExceptionType.SERVER_EXCEPTION, request);
     }
 
@@ -267,6 +285,19 @@ public class CustomGlobalRestExceptionHandler {
         static Error create(BaseExceptionType exception) {
             return new Error(exception.getMessage(), exception.getCode(), exception.getStatus());
         }
+    }
+
+    /**
+     * get current login user basic information
+     * @return
+     */
+    private String currentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && !(authentication instanceof AnonymousAuthenticationToken)) {
+            CustomUserDetails user = (CustomUserDetails)authentication.getPrincipal();
+            return "▶" + user.getUsername() + "/" + user.getFullname() + "◀";
+        }
+        return StringUtils.EMPTY;
     }
 
 }

@@ -3,7 +3,6 @@ package kr.co.cesco.econtract.common.aop;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import kr.co.cesco.econtract.config.security.userdetails.CustomUserDetails;
-import kr.co.cesco.econtract.web.users.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.aspectj.lang.JoinPoint;
@@ -150,19 +149,17 @@ public class LogAdvice {
                 !StringUtils.isBlank(gson.toJson(arg)) ? gson.toJson(arg) : "Empty");
     }
 
+    /**
+     * get current login user basic information
+     * @return
+     */
     private String currentUser() {
-        String username = "";
-        String fullname = "";
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         if (authentication != null && !(authentication instanceof AnonymousAuthenticationToken)) {
             CustomUserDetails user = (CustomUserDetails)authentication.getPrincipal();
-            username = user.getUsername();
-            fullname = user.getFullname();
+            return "▶" + user.getUsername() + "/" + user.getFullname() + "◀";
         }
-
-        return username + "/" + fullname;
+        return StringUtils.EMPTY;
     }
 
 }
