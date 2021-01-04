@@ -14,19 +14,11 @@ VALUES ('VC', 'VIRTUAL_COIN', '가상화폐');
 
 INSERT INTO sales.codes
     (code, code_nm, code_desc, code_group)
-VALUES ('BTC', 'BIT_COIN', '비트코인', 'VC');
-
-INSERT INTO sales.codes
-    (code, code_nm, code_desc, code_group)
-VALUES ('ETH', 'ETHEREUM', '이더리움', 'VC');
-
-INSERT INTO sales.codes
-    (code, code_nm, code_desc, code_group)
-VALUES ('LTC', 'LITE_COIN', '라이트코인', 'VC');
-
-INSERT INTO sales.codes
-    (code, code_nm, code_desc, code_group)
+VALUES ('BTC', 'BIT_COIN', '비트코인', 'VC'),
+VALUES ('ETH', 'ETHEREUM', '이더리움', 'VC'),
+VALUES ('LTC', 'LITE_COIN', '라이트코인', 'VC'),
 VALUES ('XRP', 'RIPPLE', '리플', 'VC');
+
 
 CREATE VIEW sales.codes_view AS
 select c.code,
@@ -66,14 +58,8 @@ CREATE TABLE sales.investors
 INSERT INTO sales.investors
 (username, firstname, lastname, email, use_yn)
 VALUES
-('stoneberg', 'lee', 'yu pyeong', 'stoneberg@gmail.net', 'Y');
-
-INSERT INTO sales.investors
-(username, firstname, lastname, email, use_yn)
-VALUES
-('zetlee', 'lee', 'ho jae', 'zetlee@gmail.net', 'Y');
-
-INSERT INTO sales.investors
-(username, firstname, lastname, email, use_yn)
-VALUES
+('stoneberg', 'lee', 'yu pyeong', 'stoneberg@gmail.net', 'Y'),
+('zetlee', 'lee', 'ho jae', 'zetlee@gmail.net', 'Y'),
 ('redfoxer', 'lee', 'sang', 'redfoxer@gmail.net', 'N');
+
+
