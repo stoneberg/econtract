@@ -17,14 +17,21 @@ public class DrillController {
 	@GetMapping(value = { "", "main" })
 	public ModelAndView drill(ModelAndView mav) {
 		log.info("@Web-Drill=============>");
-		mav.setViewName("views/web/drill/web-drill");
+		mav.setViewName("thymeleaf/views/web/drill/web-drill");
+		return mav;
+	}
+
+	@GetMapping(value = "jsp/main")
+	public ModelAndView jspDrill(ModelAndView mav) {
+		log.info("@Web-JSP-Drill=============>");
+		mav.setViewName("drill/web-drill");
 		return mav;
 	}
 	
 	@GetMapping(value = "crud")
 	public ModelAndView crud(ModelAndView mav) {
 		log.info("@CRUD-Drill=============>");
-		mav.setViewName("views/web/drill/crud-drill");
+		mav.setViewName("thymeleaf/views/web/drill/crud-drill");
 		return mav;
 	}
 

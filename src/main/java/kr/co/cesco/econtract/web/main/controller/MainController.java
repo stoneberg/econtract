@@ -17,7 +17,7 @@ public class MainController {
 	@GetMapping(value = { "", "/main" })
 	public ModelAndView list(ModelAndView mav) {
 		log.info("@Web-Drill=============>");
-		mav.setViewName("views/web/drill/web-drill");
+		mav.setViewName("thymeleaf/views/web/drill/web-drill");
 		return mav;
 	}
 

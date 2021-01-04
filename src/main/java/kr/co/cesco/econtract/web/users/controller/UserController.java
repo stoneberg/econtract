@@ -19,7 +19,7 @@ public class UserController {
         log.info("@login=============>");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-            mav.setViewName("views/web/login/login");
+            mav.setViewName("thymeleaf/views/web/login/login");
         } else {
             mav.setViewName("redirect:/main");
         }

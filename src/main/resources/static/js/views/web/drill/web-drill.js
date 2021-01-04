@@ -4,6 +4,7 @@ const module = (function (global, $, _, moment, thisPage) {
      * @ 모듈 변수(상수) 선언
      **************************************************************************/
     const CTX = thisPage['ctxPath'];
+    console.log("CTX=======>", CTX);
 
 
 

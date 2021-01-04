@@ -64,13 +64,15 @@
             <appender-ref ref="ERROR_FILEOUT" />
         </logger>
 
-        <logger name="org.springframework" level="INFO" additivity="false">
+        <logger name="org.springframework.web" level="DEBUG" additivity="false">
             <appender-ref ref="STDOUT" />
-            <appender-ref ref="TRACE_FILEOUT" />
-            <appender-ref ref="ERROR_FILEOUT" />
         </logger>
 
-        <logger name="org.springframework.security" level="DEBUG" additivity="false">
+        <logger name="org.springframework.core" level="INFO" additivity="false">
+            <appender-ref ref="STDOUT" />
+        </logger>
+
+        <logger name="org.springframework.security" level="INFO" additivity="false">
             <appender-ref ref="STDOUT" />
         </logger>
 

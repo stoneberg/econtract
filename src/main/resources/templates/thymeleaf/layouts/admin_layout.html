@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-    <head th:replace="fragments/admin/import :: importFragment"></head>
+    <head th:replace="thymeleaf/fragments/admin/import :: importFragment"></head>
 
     <body>
         <!-- wrap div -->
         <div class="wrap admin-wrap">
         
             <!-- header -->
-            <header th:replace="fragments/admin/header :: headerFragment"></header>
+            <header th:replace="thymeleaf/fragments/admin/header :: headerFragment"></header>
             
             <!--s:container-->
             <div class="container-wrap">
@@ -32,7 +33,7 @@
 
             </div>
             <!-- footer -->
-            <footer th:replace="fragments/admin/footer :: footerFragment"></footer>
+            <footer th:replace="thymeleaf/fragments/admin/footer :: footerFragment"></footer>
             <!-- end wrap div -->
             <!--e:container-->
         </div>
