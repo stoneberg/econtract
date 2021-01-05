@@ -35,4 +35,11 @@ public class DrillController {
 		return mav;
 	}
 
+	@GetMapping(value = "nice-identify")
+	public ModelAndView identify(ModelAndView mav) {
+		log.info("@nice-identify=============>");
+		mav.setViewName("drill/nice-identify");
+		return mav;
+	}
+
 }

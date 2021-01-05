@@ -11,9 +11,14 @@ const module = (function (global, $, _, moment, thisPage) {
     /***************************************************************************
      * @ 모듈 함수 선언
      **************************************************************************/
-    // function define_user_function_here() {
-    //
-    // }
+    window.name ="Parent_window";
+    function openNiceIdentifyPop(){
+        window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+        document.form_chk.action = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
+        document.form_chk.target = "popupChk";
+        document.form_chk.submit();
+    }
+
 
     /***************************************************************************
      * @ jquery 이벤트 등록
@@ -55,6 +60,15 @@ const module = (function (global, $, _, moment, thisPage) {
             ).done(function (response) {
                 console.log("response=======>", response);
             });
+        });
+
+        /**
+         * Nice 본인인증
+         */
+        $('#nice-identify').on('click', function(e) {
+            e.preventDefault();
+            console.log("#나이스 본인인증============================>");
+            openNiceIdentifyPop();
         });
 
 
