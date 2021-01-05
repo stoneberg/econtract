@@ -9,7 +9,7 @@
     |________/      \______/  \______/ |__/  \__/   |__/   |__/  |__/|__/  |__/ \______/    |__/   
                                                                                                    
     :: Local Server                                                                                             
-    :: Spring Boot ::        (v2.4.1.RELEASE)
+    :: Spring Boot ::        (v2.3.7.RELEASE)
     :: @since 2020.12
     :: Developed By Cesco Co., Ltd.
     
